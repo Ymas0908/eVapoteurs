@@ -1,0 +1,75 @@
+<ui:composition
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:ui="http://java.sun.com/jsf/facelets"
+        xmlns:p="http://primefaces.org/ui"
+        xmlns:po="http://primefaces.org/poseidon">
+
+    <div class="menu-wrapper">
+        <div class="layout-menu-container">
+            <h:form id="menuform">
+                <po:menu widgetVar="PoseidonMenuWidget">
+                    <p:submenu id="m_homepage" label="Favorites" icon="pi pi-home">
+                        <p:menuitem id="m_dashboard" value="Dashboard" icon="pi pi-home" outcome="/content/starter"/>
+                        <p:submenu label="Gestion des profils utilisateurs" icon="pi pi-th-large">
+                            <p:menuitem value="Génerer mot de passe" icon="pi pi-pencil"
+                                        outcome="/generer-mot-de-passe/generer-mot-de-passe"/>
+
+                        </p:submenu>
+
+
+                    </p:submenu>
+
+
+                    <p:separator/>
+
+                    <!--                    <p:submenu id="m_primeblocks" label="Prime Blocks" icon="pi pi-prime">-->
+                    <!--                        <p:menuitem id="m_allblocks" value="All Blocks" icon="pi pi-globe" target="_blank" url="https://www.primefaces.org/primeblocks-jsf"/>-->
+                    <!--                    </p:submenu>-->
+                    <!--                    <p:separator />-->
+                    <!--                    <p:submenu id="m_utils" label="Utilities" icon="pi pi-compass">-->
+                    <!--                        <p:menuitem id="m_flex" value="PrimeFlex" icon="pi pi-desktop" target="_blank" url="https://www.primefaces.org/primeflex"/>-->
+                    <!--                    </p:submenu>-->
+                    <!--                    <p:separator />-->
+                    <!--                    <p:submenu id="m_default" label="Pages" icon="pi pi-briefcase">-->
+                    <!--                        <p:menuitem id="m_landing" value="Landing" icon="pi pi-user-plus" outcome="/content/landing" />-->
+                    <!--                        <p:menuitem id="m_login" value="Login" icon="pi pi-sign-in" outcome="/content/login" />-->
+                    <!--                        <p:menuitem id="m_invoice" value="Invoice" icon="pi pi-dollar" outcome="/content/invoice" />-->
+                    <!--                        <p:menuitem id="m_help" value="Help" icon="pi pi-question-circle" outcome="/content/help" />-->
+                    <!--                        <p:menuitem id="m_error" value="Error" icon="pi pi-times-circle" outcome="/content/error" />-->
+                    <!--                        <p:menuitem id="m_notfound" value="Not Found" icon="pi pi-exclamation-circle" outcome="/content/notfound" />-->
+                    <!--                        <p:menuitem id="m_access" value="Access Denied" icon="pi pi-lock" outcome="/content/access" />-->
+                    <!--                        <p:menuitem id="m_empty" value="Empty" icon="pi pi-circle-off" outcome="/content/empty" />-->
+                    <!--                    </p:submenu>-->
+                    <!--                    <p:separator />-->
+                    <!--                    <p:submenu id="m_hierarchy" label="Hierarchy" icon="pi pi-align-left">-->
+                    <!--                        <p:submenu id="m_sm1" label="Submenu 1" icon="pi pi-align-left">-->
+                    <!--                            <p:submenu id="m_sm11" label="Submenu 1.1" icon="pi pi-align-left">-->
+                    <!--                                <p:menuitem id="m_lnk111" value="Link 1.1.1" icon="pi pi-align-left" url="#" />-->
+                    <!--                                <p:menuitem id="m_lnk112" value="Link 1.1.2" icon="pi pi-align-left" url="#" />-->
+                    <!--                                <p:menuitem id="m_lnk113" value="Link 1.1.3" icon="pi pi-align-left" url="#" />-->
+                    <!--                            </p:submenu>-->
+                    <!--                            <p:submenu id="m_sm12" label="Submenu 1.2" icon="pi pi-align-left">-->
+                    <!--                                <p:menuitem id="m_lnk121" value="Link 1.2.1" icon="pi pi-align-left" url="#" />-->
+                    <!--                            </p:submenu>-->
+                    <!--                        </p:submenu>-->
+                    <!--                        <p:submenu id="m_sm2" label="Submenu 2" icon="pi pi-align-left">-->
+                    <!--                            <p:submenu id="m_sm21" label="Submenu 2.1" icon="pi pi-align-left">-->
+                    <!--                                <p:menuitem id="m_lnk211" value="Link 2.1.1" icon="pi pi-align-left" url="#" />-->
+                    <!--                                <p:menuitem id="m_lnk212" value="Link 2.1.2" icon="pi pi-align-left" url="#" />-->
+                    <!--                            </p:submenu>-->
+                    <!--                            <p:submenu id="m_sm22" label="Submenu 2.2" icon="pi pi-align-left">-->
+                    <!--                                <p:menuitem id="m_lnk221" value="Link 2.2.1" icon="pi pi-align-left" url="#" />-->
+                    <!--                            </p:submenu>-->
+                    <!--                        </p:submenu>-->
+                    <!--                    </p:submenu>-->
+                    <!--                    <p:separator />-->
+                    <!--                    <p:submenu id="m_getstarted" label="Start" icon="pi pi-download">-->
+                    <!--                        <p:menuitem id="m_buy" value="Buy Now" icon="pi pi-shopping-cart" url="https://www.primefaces.org/store" />-->
+                    <!--                    </p:submenu>-->
+                </po:menu>
+            </h:form>
+        </div>
+    </div>
+
+</ui:composition>

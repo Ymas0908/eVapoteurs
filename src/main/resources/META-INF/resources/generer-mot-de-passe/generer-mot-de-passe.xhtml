@@ -1,0 +1,130 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:p="http://primefaces.org/ui" xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                template="/WEB-INF/template.xhtml">
+
+    <ui:define name="title">Générer mot de passe pour un profil utilisateur </ui:define>
+
+    <ui:define name="viewname">
+        <li>GESTION DES PROFILS UTILISATEURS</li>
+        <li><i class="pi pi-chevron-right"></i></li>
+        <li>
+            <p:link outcome="/generer-mot-de-passe/generer-mot-de-passe.xhtml">GENERER MOT DE PASSE </p:link>
+        </li>
+    </ui:define>
+    <ui:define name="content">
+        <h:form id="form">
+            <div class="grid">
+                <div class="col-12">
+                    <div class="card">
+                        <h4 class="font-bold my-3"> Généreration de mot de passe </h4>
+                        <div class="my-3">
+                            <h5>Liste des profils utilisateurs (#{profilUtilisateurMB.listProfilUtilisateurs.size()})</h5>
+                        </div>
+                        <div class="grid">
+                            <div class="col-12">
+                                <p:dataTable id="profilutilisateurDT"
+                                             widgetVar="profilutilisateurDT"
+                                             scrollable="true"
+                                             scrollHeight="450"
+                                             reflow="true"
+                                             lazy="false"
+                                             var="profilutilisateur"
+                                             value="#{profilUtilisateurMB.listProfilUtilisateurs}"
+                                             emptyMessage="Aucune données"
+                                             rowKey="#{profilutilisateur}">
+                                    <f:facet name="header">
+                                        <div class="flex justify-content-end align-items-center">
+                                            <div>
+                                                <p:commandButton id="toggler" type="button" value="Filtre"
+                                                                 icon="pi pi-align-justify"/>
+                                                <p:columnToggler datasource="profilutilisateurDT" trigger="toggler">
+                                                </p:columnToggler>
+                                            </div>
+                                        </div>
+                                    </f:facet>
+                                    <p:column headerText="Nom">
+                                        <h:outputText
+                                                value="#{profilutilisateur.nom}"/>
+                                    </p:column>
+                                    <p:column headerText="Prénom">
+                                        <h:outputText
+                                                value="#{profilutilisateur.prenom}"/>
+                                    </p:column>
+                                    <p:column headerText="Statut profil utilisateur">
+                                        <h:outputText value="#{profilutilisateur.statutProfilUtilisateur}"/>
+                                    </p:column>
+                                    <p:column headerText="Type profil utilisateur">
+                                        <h:outputText value="#{profilutilisateur.typeProfilUtilisateur}"/>
+                                    </p:column>
+                                    <p:column headerText="Action" exportable="false" width="7em">
+                                        <p:commandButton
+                                                icon="pi pi-eye"
+                                                styleClass="ui-button rounded-button mr-2"
+                                                onclick="PF('profilutilisateurSidebar').show();"
+                                        />
+                                    </p:column>
+                                </p:dataTable>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </h:form>
+        <p:sidebar widgetVar="profilutilisateurSidebar" styleClass="w-full lg:w-6 h-full overflow-y-auto"
+                   position="right">
+            <h:form id="detailprofilutilisateurForm">
+                <div class="grid">
+                    <div class="col-12">
+                        <h4 class="font-bold">Détail du profil utilisateur</h4>
+                        <p:divider styleClass="mb-3"/>
+                        <div class="ui-fluid formgrid grid ">
+                            <div class="field col-12 md:col-6">
+                                <p:outputLabel value="E-mail"/>
+                                <p:inputText readonly="true"
+                                             value="#{profilutilisateur.email}"/>
+                            </div>
+                            <div class="field col-12 md:col-6">
+                                <p:outputLabel value="Contributeur rattaché"/>
+                                <p:inputText readonly="true"
+                                             value="#{profilutilisateur.contributeurRattache}"/>
+                            </div>
+                            <div class="field col-12 md:col-6">
+                                <p:outputLabel for="@next" value="Statut du profil utilisateur"/>
+                                <p:inputText readonly="true"
+                                             value="#{profilutilisateur.statutProfilUtilisateur}"/>
+                            </div>
+                            <div class="field col-12 md:col-6">
+                                <p:outputLabel for="@next" value="Date de création"/>
+                                <p:inputText readonly="true"
+                                             value="#{profilutilisateur.dateCreation}"/>
+                            </div>
+
+                            <div class="field col-12 md:col-6">
+                                <p:outputLabel for="@next" value="Mobile"/>
+                                <p:inputText readonly="true"
+                                             value="#{profilutilisateur.mobile}"/>
+                            </div>
+                            <div class="field col-12 md:col-6">
+                                <p:outputLabel for="@next" value="Fonction"/>
+                                <p:inputText readonly="true"
+                                             value="#{profilutilisateur.fonction}"/>
+                            </div>
+                            <div class="field col-12 md:col-6">
+                                <p:outputLabel value="Description"/>
+                                <p:inputTextarea rows="5"
+                                                 autoResize="true"/>
+                            </div>
+                        </div>
+                        <div>
+                            <p:commandButton value="Générer"
+                                             title="Générer le mot de passe"
+                                             icon="pi pi-check" styleClass="md:w-auto"/>
+                        </div>
+                    </div>
+                </div>
+            </h:form>
+        </p:sidebar>
+    </ui:define>
+</ui:composition>
