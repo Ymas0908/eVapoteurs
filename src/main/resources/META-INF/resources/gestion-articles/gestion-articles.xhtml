@@ -10,7 +10,7 @@
         <li>GESTION DES PROFILS UTILISATEURS</li>
         <li><i class="pi pi-chevron-right"></i></li>
         <li>
-            <p:link outcome="/generer-mot-de-passe/generer-mot-de-passe.xhtml">GENERER MOT DE PASSE </p:link>
+            <p:link outcome="/gestion-articles/gestion-articles.xhtml">GENERER MOT DE PASSE </p:link>
         </li>
     </ui:define>
     <ui:define name="content">
@@ -18,52 +18,33 @@
             <div class="grid">
                 <div class="col-12">
                     <div class="card">
-                        <h4 class="font-bold my-3"> Généreration de mot de passe </h4>
+                        <h4 class="font-bold my-3"> Gestion des articles </h4>
                         <div class="my-3">
-                            <h5>Liste des profils utilisateurs (#{profilUtilisateurMB.listProfilUtilisateurs.size()})</h5>
+                            <h5>Liste des articles (#{articlesMB.articlesList.size()})</h5>
                         </div>
                         <div class="grid">
                             <div class="col-12">
-                                <p:dataTable id="profilutilisateurDT"
-                                             widgetVar="profilutilisateurDT"
-                                             scrollable="true"
-                                             scrollHeight="450"
-                                             reflow="true"
-                                             lazy="false"
-                                             var="profilutilisateur"
-                                             value="#{profilUtilisateurMB.listProfilUtilisateurs}"
-                                             emptyMessage="Aucune données"
-                                             rowKey="#{profilutilisateur}">
+                                <p:dataTable id="articlesDT" var="article" value="#{articlesMB.articlesList}"
+                                             emptyMessage="Aucune donnée disponible" rowKey="#{article.id}"
+                                             scrollable="true" scrollHeight="450" reflow="true">
                                     <f:facet name="header">
                                         <div class="flex justify-content-end align-items-center">
-                                            <div>
-                                                <p:commandButton id="toggler" type="button" value="Filtre"
-                                                                 icon="pi pi-align-justify"/>
-                                                <p:columnToggler datasource="profilutilisateurDT" trigger="toggler">
-                                                </p:columnToggler>
-                                            </div>
+                                            <p:commandButton id="toggler" type="button" value="Filtre" icon="pi pi-align-justify"
+                                                             onclick="PF('articlesDT').toggleColumns();"/>
                                         </div>
                                     </f:facet>
-                                    <p:column headerText="Nom">
-                                        <h:outputText
-                                                value="#{profilutilisateur.nom}"/>
+                                    <p:column headerText="Identifiant">
+                                        <h:outputText value="#{article.id}"/>
                                     </p:column>
-                                    <p:column headerText="Prénom">
-                                        <h:outputText
-                                                value="#{profilutilisateur.prenom}"/>
+                                    <p:column headerText="Nom de l'article">
+                                        <h:outputText value="#{article.nom}"/>
                                     </p:column>
-                                    <p:column headerText="Statut profil utilisateur">
-                                        <h:outputText value="#{profilutilisateur.statutProfilUtilisateur}"/>
+                                    <p:column headerText="Description de l'article">
+                                        <h:outputText value="#{article.description}"/>
                                     </p:column>
-                                    <p:column headerText="Type profil utilisateur">
-                                        <h:outputText value="#{profilutilisateur.typeProfilUtilisateur}"/>
-                                    </p:column>
-                                    <p:column headerText="Action" exportable="false" width="7em">
-                                        <p:commandButton
-                                                icon="pi pi-eye"
-                                                styleClass="ui-button rounded-button mr-2"
-                                                onclick="PF('profilutilisateurSidebar').show();"
-                                        />
+                                    <p:column headerText="Action" style="width: 7em;">
+                                        <p:commandButton icon="pi pi-eye" styleClass="ui-button rounded-button mr-2"
+                                                         onclick="PF('profilutilisateurSidebar').show();"/>
                                     </p:column>
                                 </p:dataTable>
                             </div>
